@@ -30,15 +30,15 @@
 		
 	</appenders>
 	<loggers>
-		<logger name="com.tgl" additivity="false" level="ERROR">
+		<logger name="com.tgl" additivity="false" level="INFO">
 			<AppenderRef ref="App" />
 		    <AppenderRef ref="errorLog" />
-		    <AppenderRef ref="STDOUT" />
+		   <AppenderRef ref="STDOUT" />
 		</logger>
 		
 		
 		
-		<logger name="org.springframework" additivity="false" level="DEBUG">
+		<logger name="org.springframework" additivity="false" level="INFO">
 			<AppenderRef ref="App" />
 			<AppenderRef ref="STDOUT" />
 		</logger>

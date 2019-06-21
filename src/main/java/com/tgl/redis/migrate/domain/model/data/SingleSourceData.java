@@ -17,12 +17,14 @@ public class SingleSourceData extends SourceData{
 	
 	private RedisConnection connection;
 	
+	private MongodbSourceData mongodbSourceData;
+	
 	public SingleSourceData()
 	{
 		
 	}
 	
-	public SingleSourceData(String ip,Integer port,RedisConnection connection)
+	public SingleSourceData(String ip, Integer port, RedisConnection connection, MongodbSourceData mongodbSourceData)
 	{
 		AddressVO address = new AddressVO();
 		address.setIp(ip);
@@ -30,6 +32,7 @@ public class SingleSourceData extends SourceData{
 		
 		this.address = address;
 		this.connection = connection;
+		this.mongodbSourceData = mongodbSourceData;
 	}
 	
 	public void sync()
@@ -46,6 +49,7 @@ public class SingleSourceData extends SourceData{
 	public boolean syncFileMsg(String msg)
 	{
 		logger.info("syncFileMsg ===========================" + msg);
+		mongodbSourceData.syncFileMsg(msg);
 		return true;
 	}
 
@@ -55,6 +59,14 @@ public class SingleSourceData extends SourceData{
 
 	public void setAddress(AddressVO address) {
 		this.address = address;
+	}
+
+	public MongodbSourceData getMongodbSourceData() {
+		return mongodbSourceData;
+	}
+
+	public void setMongodbSourceData(MongodbSourceData mongodbSourceData) {
+		this.mongodbSourceData = mongodbSourceData;
 	}
 
 }
